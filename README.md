@@ -16,3 +16,6 @@ How to run on your localhost:
 - run npm install
 - run npm run dev
 - run using http://localhost:9000
+
+Deployed Version Base URL:
+https://dinebase-ai-api.vercel.app

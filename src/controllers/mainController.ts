@@ -11,7 +11,6 @@ const openaiBaseURL = 'https://api.openai.com/v1';
 export const execute = async (req: Request, res: Response): Promise<any> => {
   try {
     const validate = queryValidate(req.body);
-    console.log(generateSessionToken())
     
     if (validate !== true) {
       return res.status(400).json({ errors: [{ status: '400', detail: validate.error }] });

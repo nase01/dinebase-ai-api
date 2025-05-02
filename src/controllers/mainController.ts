@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import queryValidate from '../utils/validations';
 import getQueryPrompt from '../utils/prompts';
+import { generateSessionToken } from '../utils/keygen';
 import axios from 'axios';
+
 
 const fqrBaseURL = 'https://api.foursquare.com/v3';
 const openaiBaseURL = 'https://api.openai.com/v1';
@@ -9,6 +11,7 @@ const openaiBaseURL = 'https://api.openai.com/v1';
 export const execute = async (req: Request, res: Response): Promise<any> => {
   try {
     const validate = queryValidate(req.body);
+    console.log(generateSessionToken())
     
     if (validate !== true) {
       return res.status(400).json({ errors: [{ status: '400', detail: validate.error }] });
@@ -64,6 +67,8 @@ export const execute = async (req: Request, res: Response): Promise<any> => {
 
 const fetchPlaceDetails = async (id: string) => {
   try {
+    const sessionToken = generateSessionToken();
+
     const res = await axios.get(`${fqrBaseURL}/places/${id}`, {
       headers: {
         Authorization: `${process.env.FOURSQUARE_API_KEY}`,
@@ -71,7 +76,7 @@ const fetchPlaceDetails = async (id: string) => {
       },
       params: {
         fields: 'name,categories,price,location,rating,stats,hours,link,photos',
-        session_token: `st-${process.env.FOURSQUARE_API_KEY}`,
+        session_token: `${sessionToken}`,
       },
     });
 

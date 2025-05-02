@@ -1,8 +1,8 @@
 import express from 'express';
-import { ping } from '../controllers/mainController';
+import { execute } from '../controllers/mainController';
 
 const router = express.Router();
 
-router.get('/ping', ping);
+router.post('/execute', execute);
 
 export default router;

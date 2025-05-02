@@ -9,8 +9,10 @@ const getQueryPrompt = (message: string) => {
 			"parameters": {
 				"query": "<type of food or cuisine>",
 				"near": "<location or neighborhood>",
-				"price": "<1 to 4, where 1 is cheapest and 4 is most expensive>",
+				"min_price": <1 to 4, where 1 is most affodable and 4 is most expensive>,
+				"max_price": <1 to 4, where 1 is most affodable and 4 is most expensive>,
 				"open_now": <true or false>
+				"sort": <POPULARITY or RATING, where POPULARITY is the top rated and RATING is default>
 			}
 		}
 

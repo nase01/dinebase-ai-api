@@ -3,9 +3,11 @@ import { createServer, IncomingMessage, ServerResponse } from 'http';
 import dotenv from 'dotenv';
 import express from 'express';
 import mainRoutes from '../src/routes/mainRoutes';
+import cors from 'cors'
 
 dotenv.config();
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // routes entry point

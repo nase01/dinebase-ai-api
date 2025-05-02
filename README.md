@@ -4,6 +4,8 @@ Simple backend API service that uses AI to parametized user's query and use it t
 
 Requirements:
 - Node 20+
+- Foursquare API keys https://foursquare.com/developers
+- OpenAI API keys https://platform.openai.com
 
 Tech Stack:
 - Expresss
@@ -18,4 +20,16 @@ How to run on your localhost:
 - run using http://localhost:9000
 
 Deployed Version Base URL:
-https://dinebase-ai-api.vercel.app
+- https://dinebase-ai-api.vercel.app
+
+API Endpoint:
+curl --location 'https://dinebase-ai-api.vercel.app/api/execute' \
+--header 'Content-Type: application/json' \
+--data '{
+  "message": "Find me a cheap sushi restaurant in downtown Los Angeles that's open now and has at least a 4-star rating."
+}
+'
+
+Demo App Client:
+- https://dinebase-ai.vercel.app
+
